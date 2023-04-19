@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+        <title>Rod's To-do App</title>
+        <meta name="description" content="This is a code challenge 😁"/>
+    </head>
+    <body>
+        <header>
+            <h1 class="text-center-align">To do App</h1>
+            <aside class="text-center-align">Code challenge for Cargo Produce</aside>
+        </header>
+        <div class="button-magenta-cyan-wrapper">
+            <button class="button-magenta-cyan" (click)="onNewTask()">New Task</button>
+        </div>
+        <h2><strong>Tasks (Total: {{ (tasksMinutesCount$ | async) }} minute/s)</strong></h2>
+        <div *ngFor="let task of (tasksActive$ | async)">
+            <app-timer-component [id]="task.id"></app-timer-component>
+        </div>
+        <div *ngIf="(tasksActive$ | async)?.length==0">
+            <label>No active tasks yet.</label>
+        </div>
+        <div>
+            <h2><strong>Tasks done</strong></h2>
+            <div *ngIf="(tasksDone$ | async)?.length==0">
+                <label>No completed tasks yet.</label>
+            </div>
+            <ul *ngFor="let task of (tasksDone$ | async)">
+                <li>{{task.description == "" ? "Unknown" : task.description }} Task completed in {{ task.timeSpent == 0 ? "seconds" : task.timeSpent + " minute/s" }} </li>
+            </ul>
+        </div>
+        <footer class="align-bottom text-center-align">
+            <p><strong>Rod Ramírez</strong></p>
+        </footer>
+    </body>
+</html>

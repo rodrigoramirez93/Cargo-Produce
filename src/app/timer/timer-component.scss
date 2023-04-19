@@ -1,0 +1,83 @@
+.flex-wrapper{
+  display: grid; 
+  grid-template-columns: 0.5fr 2fr 0.8fr 0.7fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "button loader done delete"; 
+  border-bottom: 5px solid black;
+  align-items: center;
+}
+
+.button {
+  grid-area: button; 
+}
+
+.done { 
+  grid-area: done;
+}
+
+.delete { 
+  grid-area: delete; 
+}
+
+.loader { 
+  grid-area: loader; 
+}
+
+.hidden {
+  display: none;
+}
+
+.svg{
+  display:block;
+  background-color: red;
+  margin-left:0;
+  margin-right:auto;
+  height: 100%;
+}
+
+.svg:hover{
+  display: none;
+}
+
+.button {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 74px;
+
+  border-color: transparent transparent transparent #202020;
+  transition: 100ms all ease;
+  cursor: pointer;
+
+  // play state
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+
+  &.paused {
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+  }
+
+  &:hover {
+    border-color: transparent transparent transparent #404040;
+  }
+}
+
+#loader 
+{ fill: #0088cc }
+
+#border 
+{ fill: #00517a }
+
+.activity{
+  width:50%;
+}
+
+.timeSpent{
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}

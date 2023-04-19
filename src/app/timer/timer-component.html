@@ -1,0 +1,14 @@
+Activity: <input [value]="(task$ | async)?.description" class="activity" (focusout)="onEnterDescription(id, $event)" placeholder="Add a description to your task"/><label class="text-center-align" *ngIf="(task$ | async)?.started">In Progress...</label>
+<div class="flex-wrapper">
+    <button [ngClass]="buttonClass" (mouseover)="onButtonMouseOver(id)" (mouseout)="buttonClass='button'" (click)="onStart(id, undefined)"></button>        
+    <div class="loader">
+        <div>{{ (task$ | async)?.progressBar }}</div>
+    </div>
+    <div class="done">
+        <button class="button-magenta-cyan" (click)="onCompleteTask(id)">Done</button>
+    </div>
+    <div class="delete">
+        <button class="button-magenta-cyan" (click)="onDeleteTask(id)">Delete</button>
+    </div>
+</div>
+<label id="time-spent" class="timeSpent">Time Spent: {{ (task$ | async)?.timeSpent }} minutes</label>
